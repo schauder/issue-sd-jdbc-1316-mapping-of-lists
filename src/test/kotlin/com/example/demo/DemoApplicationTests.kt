@@ -47,7 +47,6 @@ class DemoApplicationTests {
     fun createTables() {
         jdbcTemplate.execute(
             """
-            
             CREATE TABLE IF NOT EXISTS parent
             (
                 p_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -57,9 +56,12 @@ class DemoApplicationTests {
             (
                 c_id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
                 name VARCHAR,
-                p_id UUID NOT NULL REFERENCES parent (p_id)
+                p_id UUID NOT NULL REFERENCES parent (p_id),
+                index INTEGER
             );
-            
+           
+            DELETE FROM child;
+            DELETE FROM parent;
         """.trimIndent()
         )
     }

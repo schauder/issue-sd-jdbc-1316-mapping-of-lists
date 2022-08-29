@@ -11,6 +11,6 @@ data class ParentWithList(
     val pId: UUID?,
     val name: String,
 
-    @MappedCollection(idColumn = "p_id", keyColumn = "c_id")
+    @MappedCollection(idColumn = "p_id", keyColumn = "index")
     val children: List<Child>
 )
